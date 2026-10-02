@@ -1,0 +1,18 @@
+{
+  "device_id": "er-x-01",
+  "collection_interval": "30s",
+  "syslog_path": "/var/log/messages",
+  "collectors": {
+    "conntrack": true,
+    "interfaces": true,
+    "arp": true,
+    "syslog": true
+  },
+  "export": {
+    "url": "https://amalia.example/api/edge/events",
+    "bearer_token_file": "/config/edge-sensor/token",
+    "timeout": "10s",
+    "batch_size": 100,
+    "max_pending_events": 1000
+  }
+}

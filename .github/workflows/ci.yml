@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.x'
+      - run: go test ./...
+      - run: make build-erx
+      - uses: actions/upload-artifact@v4
+        with:
+          name: edge-sensor-linux-mipsle
+          path: dist/edge-sensor-linux-mipsle
